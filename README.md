@@ -1,0 +1,2 @@
+Frontend: Gatsby
+Backend: Sanity
