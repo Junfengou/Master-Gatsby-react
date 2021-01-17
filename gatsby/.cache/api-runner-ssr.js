@@ -1,4 +1,13 @@
 var plugins = [{
+      plugin: require('D:/React/Master Gatsby/master-gatsby/Gatsby with React/gatsby/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
+      options: {"plugins":[]},
+    },{
+      plugin: require('D:/React/Master Gatsby/master-gatsby/Gatsby with React/gatsby/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
+      options: {"plugins":[]},
+    },{
+      plugin: require('D:/React/Master Gatsby/master-gatsby/Gatsby with React/gatsby/node_modules/gatsby-source-sanity/gatsby-ssr'),
+      options: {"plugins":[],"projectId":"f43pd9zr","dataset":"production","watchMode":true,"token":"skTK9B2cBsgrDHiEAN3vZM5iiXSpSI429vTc1w0pDs4WLNYX8B5l2wlHuAZPJyPvSsJ7s1nFQ5Q4ec89Mcf2dBjOUyU7KfdnxsTnJgO8InyomD7uvEUK7aFBIlIoXg28XiR5JjxIjeIJroUBKu73AkvrkiQFTsf2XBVyOU7CldslE5NEGGiW"},
+    },{
       plugin: require('D:/React/Master Gatsby/master-gatsby/Gatsby with React/gatsby/gatsby-ssr'),
       options: {"plugins":[]},
     }]
