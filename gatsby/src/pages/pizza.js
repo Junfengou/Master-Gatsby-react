@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 import PizzaList from "../components/PizzaList"
+import ToppingsFilter from '../components/ToppingsFilter';
 
 
 // Gatsby takes out the headache of loading and check to see if data are being fetched, very similar to server side rendering 
@@ -9,6 +10,7 @@ function PizzaPage({ data }) {
     const pizzas = data.pizzas.nodes;
     return (
         <>
+        <ToppingsFilter />
         <PizzaList pizzas={pizzas} />
         </>
     )
@@ -38,6 +40,10 @@ export const query = graphql`
                 }
                 image {
                     asset {
+                        fixed(width: 200, height: 200)
+                        {
+                            ...GatsbySanityImageFixed
+                        }
                         fluid(maxWidth: 400){
                             ...GatsbySanityImageFluid 
                         }
