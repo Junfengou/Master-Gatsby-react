@@ -1,4 +1,7 @@
-var plugins = []
+var plugins = [{
+      plugin: require('D:/React/Master Gatsby/master-gatsby/Gatsby with React/gatsby/gatsby-ssr'),
+      options: {"plugins":[]},
+    }]
 // During bootstrap, we write requires at top of this file which looks like:
 // var plugins = [
 //   {
