@@ -75,7 +75,6 @@ async function fetchBeersAndTurnIntoNodes({
     // 1. fetch a list of beers
     const res = await fetch('https://api.sampleapis.com/beers/ale')
     const beers = await res.json()
-    console.log(beers)
     // 2. loop over each one
     beers.forEach((beer) => {
         const nodeMeta = {
@@ -97,6 +96,45 @@ async function fetchBeersAndTurnIntoNodes({
 
 }
 
+async function turnSlicemastersIntoPages({ graphql, actions })
+{
+    // 1. query all slicemasters
+    const { data } = await graphql(`
+        query {
+            slicemasters: allSanityPerson {
+                totalCount
+                nodes {
+                    name
+                    id
+                    description
+                }
+            }
+        }
+    `)
+    // 2. turn each slicemasters into their own page [TODO]
+
+    // 3. figure out how many pages there are base on how many slicemasters there are 
+    const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
+
+    const pageCount = Math.ceil(data.slicemasters.totalCount / pageSize)
+    console.log(`There are ${data.slicemasters.totalCount}total people and we have ${pageCount} pages with ${pageSize} people per page`)
+
+    // 4. loop from 1 to n and create the page for them
+    Array.from({ length: pageCount }).forEach((_, i) => {
+        actions.createPage({
+            path: `/slicemasters/${i + 1}`,
+            component: path.resolve('./src/pages/slicemasters.js'),
+            context: {
+              skip: i * pageSize,   //second page would be [1 * 4] => skip the first four
+              currentPage: i + 1,
+              pageSize,
+            }
+        })
+    })
+}
+
+
+
 // This is use to source third party API data with Gatsby
 export async function sourceNodes(params) {
     // fetch a list of beers and source them into our gatsby API!
@@ -111,8 +149,9 @@ export async function createPages(params) {
     // 1. Pizzas
     turnPizzaIntoPages(params),
     // 2. Toppings
-    turnToppingIntoPages(params)
+    turnToppingIntoPages(params),
     // 3. Slicemasters
+    turnSlicemastersIntoPages(params)
     ])
 }
 
