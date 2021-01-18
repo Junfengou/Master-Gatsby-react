@@ -6,11 +6,11 @@ import ToppingsFilter from '../components/ToppingsFilter';
 
 // Gatsby takes out the headache of loading and check to see if data are being fetched, very similar to server side rendering 
 
-function PizzaPage({ data }) {
+function PizzaPage({ data, pageContext }) {
     const pizzas = data.pizzas.nodes;
     return (
         <>
-        <ToppingsFilter />
+        <ToppingsFilter activeTopping={pageContext.topping} />
         <PizzaList pizzas={pizzas} />
         </>
     )
@@ -26,8 +26,10 @@ export default PizzaPage
         You can just simply access it with props
 */
 export const query = graphql`
-    query PizzaQuery {
-        pizzas: allSanityPizza {
+    query PizzaQuery($toppingRegex: String) { 
+        pizzas: allSanityPizza(
+            filter: { toppings: { elemMatch: { name: { regex: $toppingRegex } } } } 
+            ) {
             nodes {
                 name
                 id
