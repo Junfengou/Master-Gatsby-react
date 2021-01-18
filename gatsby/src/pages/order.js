@@ -12,7 +12,7 @@ import calculateOrderTotal from "../utils/calculateOrderTotal"
 import { graphql } from 'gatsby'
 
 
-function OrderPage({data}) {
+function OrderPage({ data }) {
     const pizzas = data.pizzas.nodes;
     const { values, updateValue } = useForm({
         name: '',
@@ -41,11 +41,11 @@ function OrderPage({data}) {
                     <MenuItemStyles key={pizza.id}>
                         <Img width="50" height="50" fluid={pizza.image.asset.fluid} alt={pizza.name} />
                         <div>
-                        <h2>{pizza.name}</h2>
+                            <h2>{pizza.name}</h2>
                         </div>
                         <div>
                             {['S', 'M', 'L'].map(size => (
-                                <button onClick={() => addToOrder({ id: pizza.id, size })} type="button">{size} {formatMoney(calculatePizzaPrice(pizza.price, size))}</button>
+                                <button key={size} onClick={() => addToOrder({ id: pizza.id, size })} type="button">{size} {formatMoney(calculatePizzaPrice(pizza.price, size))}</button>
                             ))}
                         </div>
                     </MenuItemStyles>
@@ -54,7 +54,7 @@ function OrderPage({data}) {
 
             <fieldset className="order">
                 <legend>Order</legend>
-                <PizzaOrder  order={order} pizzas={pizzas} removeFromOrder={removeFromOrder} />
+                <PizzaOrder order={order} pizzas={pizzas} removeFromOrder={removeFromOrder} />
             </fieldset>
 
             <fieldset>

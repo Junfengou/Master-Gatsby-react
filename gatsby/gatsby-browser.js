@@ -9,6 +9,7 @@
 // The purpose of this function is so that whenever we generate a page, gatsby will wrap that page with something
 import React from 'react'
 import Layout from './src/components/Layout'
+import {OrderProvider} from "../gatsby/src/components/OrderContext"
 
 function wrapPageElement({ element, props }) {
     return (
@@ -18,4 +19,9 @@ function wrapPageElement({ element, props }) {
     )
 }
 
+// Context API
+export function wrapRootElement({ element }) {
+    return <OrderProvider>{element}</OrderProvider>;
+  }
+  
 export {wrapPageElement}

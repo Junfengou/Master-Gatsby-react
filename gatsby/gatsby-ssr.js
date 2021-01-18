@@ -16,4 +16,9 @@ function wrapPageElement({ element, props }) {
     )
 }
 
+// Context API
+export function wrapRootElement({ element }) {
+    return <OrderProvider>{element}</OrderProvider>;
+  }
+
 export {wrapPageElement}
