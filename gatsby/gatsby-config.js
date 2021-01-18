@@ -35,7 +35,8 @@ export default {
     siteMetadata : {
         title: "Slicks Slices",
         siteUrl: 'https://gatsby.pizza',
-        description: "The best communist pizza"
+        description: "The best communist pizza",
+        twitter: '@slicksSlices',
     },
 
     /*
@@ -45,7 +46,7 @@ export default {
                 Sanity on have their own API, we need to convert it to Gatsby's API so we can query the data
     */
     plugins: [
-        'gatsby-plugin-react-helmet',
+        'gatsby-plugin-react-helmet', // This is for page title (SEO)
         'gatsby-plugin-styled-components',
         {
           // this is the name of the plugin you are adding

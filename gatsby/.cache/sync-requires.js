@@ -12,6 +12,7 @@ exports.components = {
   "component---src-pages-order-js": (preferDefault(require("D:\\React\\Master Gatsby\\master-gatsby\\Gatsby with React\\gatsby\\src\\pages\\order.js"))),
   "component---src-pages-pizza-js": (preferDefault(require("D:\\React\\Master Gatsby\\master-gatsby\\Gatsby with React\\gatsby\\src\\pages\\pizza.js"))),
   "component---src-pages-slicemasters-js": (preferDefault(require("D:\\React\\Master Gatsby\\master-gatsby\\Gatsby with React\\gatsby\\src\\pages\\slicemasters.js"))),
-  "component---src-templates-pizza-js": (preferDefault(require("D:\\React\\Master Gatsby\\master-gatsby\\Gatsby with React\\gatsby\\src\\templates\\Pizza.js")))
+  "component---src-templates-pizza-js": (preferDefault(require("D:\\React\\Master Gatsby\\master-gatsby\\Gatsby with React\\gatsby\\src\\templates\\Pizza.js"))),
+  "component---src-templates-slicemaster-js": (preferDefault(require("D:\\React\\Master Gatsby\\master-gatsby\\Gatsby with React\\gatsby\\src\\templates\\Slicemaster.js")))
 }
 

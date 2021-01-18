@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import PizzaList from "../components/PizzaList"
 import ToppingsFilter from '../components/ToppingsFilter';
+import SEO from "../components/SEO";
 
 
 // Gatsby takes out the headache of loading and check to see if data are being fetched, very similar to server side rendering 
@@ -10,6 +11,7 @@ function PizzaPage({ data, pageContext }) {
     const pizzas = data.pizzas.nodes;
     return (
         <>
+        <SEO title={pageContext.topping ? `Pizza with ${pageContext.topping}` : `All pizzas`} />
         <ToppingsFilter activeTopping={pageContext.topping} />
         <PizzaList pizzas={pizzas} />
         </>
