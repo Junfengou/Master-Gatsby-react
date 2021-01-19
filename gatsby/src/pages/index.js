@@ -16,7 +16,7 @@ function CurrentlySlicing({ slicemasters }) {
             <p>Home slices, standing by</p>
             {!slicemasters && <LoadingGrid count={4} />}
             {slicemasters && !slicemasters?.length  && (<p>No one is working right now</p>)}
-            {slicemasters?.length && <ItemGrid items={slicemasters} />}
+            {slicemasters?.length && <ItemGrid items={slicemasters} />} 
         </div>
     )
 }
