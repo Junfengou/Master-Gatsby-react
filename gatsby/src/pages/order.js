@@ -16,26 +16,35 @@ function OrderPage({ data }) {
     const pizzas = data.pizzas.nodes;
     const { values, updateValue } = useForm({
         name: '',
-        email: ''
+        email: '',
+        mapleSyrup: '', //This is for bots lol
     })
 
-    const { order, addToOrder, removeFromOrder } = usePizza({ pizzas, input: values });
+    const { order, addToOrder, removeFromOrder, error, loading, message, submitOrder } = usePizza({ pizzas, values: values });
+
+    if(message)
+    {
+     return (<p>{message}</p>)   
+    }
 
     return (
         <>
         <SEO title="Order a pizza!"/>
-        <OrderStyles>
-            <fieldset>
+        <OrderStyles onSubmit={submitOrder}>
+            <fieldset disabled={loading}>
                 <legend>Your info</legend>
                 <label htmlFor="name" >name</label>
                 <input type="text" name="name" id="name" value={values.name} onChange={updateValue} />
 
                 <label htmlFor="email" >Email</label>
                 <input type="email" name="email" id="email" value={values.email} onChange={updateValue} />
+
+                {/* This is honey pot. A trap built for robots. The field is only visible to bots via css so nothing to worry about */}
+                <input type="mapleSyrup" className="mapleSyrup" name="mapleSyrup" id="mapleSyrup" value={values.mapleSyrup} onChange={updateValue} />
                 
             </fieldset>
 
-            <fieldset className="menu">
+            <fieldset className="menu" disabled={loading}>
                 <legend>Menu</legend>
                 {pizzas.map(pizza => (
                     <MenuItemStyles key={pizza.id}>
@@ -52,14 +61,17 @@ function OrderPage({ data }) {
                 ))}
             </fieldset>
 
-            <fieldset className="order">
+            <fieldset className="order" disabled={loading}>
                 <legend>Order</legend>
                 <PizzaOrder order={order} pizzas={pizzas} removeFromOrder={removeFromOrder} />
             </fieldset>
 
-            <fieldset>
+            <fieldset disabled={loading}>
                 <h3>Your total is {formatMoney(calculateOrderTotal(order, pizzas))}</h3>
-                <button type="submit">Order ahead</button>
+                <div>
+                    {error ? <p>{error}</p> : ''}
+                </div>
+                <button type="submit" disabled={loading}>{loading ? 'Placing order...' : 'Order ahead!'}</button>
             </fieldset>
 
         </OrderStyles>

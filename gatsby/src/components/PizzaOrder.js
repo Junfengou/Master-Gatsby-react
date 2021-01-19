@@ -5,7 +5,7 @@ import calculatePizzaPrice from '../utils/calculatePizzaPrice'
 import formatMoney from '../utils/formatMoney'
 
 function PizzaOrder({ order, pizzas, removeFromOrder }) {
-    console.log("order:", order)
+    // console.log("order:", order)
     return (
         <>
             {order.map((singleOrder, index) => {

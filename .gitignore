@@ -1,4 +1,7 @@
 /gatsby/node_modules
 /gatsby/.vscode
+/gatsby/functions/placeOrder/node_modules
+/gatsby/functions/placeOrder/package.json
+/gatsby/functions/placeOrder/package-lock.json
 
 /sanity/node_modules

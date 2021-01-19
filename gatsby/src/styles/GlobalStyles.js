@@ -42,7 +42,6 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  //The purpose of this image wrapper is to take an image and turn it into base 64. So when it renders, it will have this blur effect as it loads
   .gatsby-image-wrapper img[src*=base64\\,] {
     image-rendering: -moz-crisp-edges;
     image-rendering: pixelated;
